@@ -1,0 +1,50 @@
+{
+	"ocfclass": {
+		"prefix": "ocfclass",
+		"body": [
+			"#ifndef ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_HPP",
+			"#define ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_HPP",
+			"#include <iostream>",
+			"",
+			"class $TM_FILENAME_BASE",
+			"{",
+			"private:\n\t/*attr*/",
+			"public:",
+			"\t$TM_FILENAME_BASE(void);",
+			"\t$TM_FILENAME_BASE(const $TM_FILENAME_BASE &toCopy);",
+			"\t$TM_FILENAME_BASE\t&operator = (const $TM_FILENAME_BASE &toCopy);",
+			"\t~$TM_FILENAME_BASE(void);",
+			"};",
+			"",
+			"#endif"
+		],
+		"description": "Code snippet for orthodox canonical form class",
+	},
+	"cfunctions": {
+		"prefix": "cfunctions",
+		"body": [
+			"#include \"${TM_FILENAME_BASE}.hpp\"",
+			"",
+			"${TM_FILENAME_BASE}::${TM_FILENAME_BASE}(void)",
+			"{",
+			"}",
+			"",
+			"${TM_FILENAME_BASE}\t&${TM_FILENAME_BASE}::operator = (const ${TM_FILENAME_BASE} &toCopy)",
+			"{",
+			"\tif (this == &toCopy)",
+			"\t\treturn (*this);",
+			"\treturn (*this);",
+			"}",
+			"",
+			"${TM_FILENAME_BASE}::${TM_FILENAME_BASE}(const ${TM_FILENAME_BASE} &toCopy)",
+			"{",
+			"\t(*this) = toCopy;",
+			"}",
+			"",
+			"${TM_FILENAME_BASE}::~${TM_FILENAME_BASE}(void)",
+			"{",
+			"}"
+		],
+		"description": "Basic member functions code snippet for OCF class"
+	}
+}

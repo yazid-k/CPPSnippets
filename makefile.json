@@ -1,0 +1,29 @@
+{
+	"make": {
+		"prefix": "Makefile snippet",
+		"body": [
+			"NAME=",
+			"CPP=c++",
+			"FLAGS=-Wall -Wextra -Werror -std=c++98",
+			"OBJDIR = .obj",
+			"SRCS=main.cpp",
+			"HEADERS=",
+			"OBJS=$(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))",
+			"all: $(NAME)",
+			"$(NAME): $(OBJS) $(HEADERS)",
+			"\t$(CPP) $(FLAGS) $(OBJS) -o $(NAME)",
+			"$(OBJDIR)/%.o: %.cpp $(HEADERS)",
+			"\tmkdir -p $(dir $@)",
+			"\t$(CPP) $(FLAGS) $(OPTS) -c $< -o $@",
+			"clean:",
+			"\trm -rf $(OBJDIR)",
+			"fclean: clean",
+			"\trm -f $(NAME)",
+			"re: fclean all",
+			".PHONY: all clean fclean re"
+
+		],
+		"description": "Code snippet for cpp Makefile",
+	},
+
+}
